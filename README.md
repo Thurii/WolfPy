@@ -8,6 +8,4 @@ In the event that Python's side isn't able to "eval" the result then it's return
 ### What's working:
 1. Numbers (Integers, fractions, complex numbers)
 2. Lists
-
-### What's not working:
-1. Anything containing a "Plus" or "Times"
+3. Addition (i.e.: Plus[E,Pi])
