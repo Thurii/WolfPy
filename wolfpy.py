@@ -1,11 +1,12 @@
 from time import sleep
 from fractions import Fraction
+from math import e as E
+from math import pi as Pi
 class relay:
     def __str__(self):
         return 'Input:  "'+open('relay.ramdisk/relayi','r').read()+'"\nOutput: "'+self.Result()+'"'
 
-
-    def Evaluate(self, expr, *, evaluate = True, wait = True):
+    def Evaluate(self, expr:str, *, evaluate = True, wait = True):
         result = self.Result()
         if expr != open('relay.ramdisk/relayi','r').read(): #save time
             lastResult = self.Result()
@@ -22,7 +23,7 @@ class relay:
             return result
 
     def Result(self):                                                                           
-        return open('relay.ramdisk/relayo','r').read()                                          
+        return open('relay.ramdisk/relayo','r').read()
 
-    def Clear(self):  # I *think* that this'll clear up RAM if ever needed
-        open('relay.ramdisk/relayi','w').write('Remove@ "Global`*";"Cleared Global context"')
+    def Times(self, x:list) -> [complex, float, int]:
+        return x.pop() if len(x) is 1 else x.pop() * Times(x)
