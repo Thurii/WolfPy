@@ -26,4 +26,4 @@ class relay:
         return open('relay.ramdisk/relayo','r').read()
 
     def Times(self, x:list) -> [complex, float, int]:
-        return x.pop() if len(x) is 1 else x.pop() * Times(x)
+        return x.pop() if len(x) is 1 else x.pop() * self.Times(x)
