@@ -1,14 +1,14 @@
 (* Rewrite Wolfram code so that it's "eval" friendly *)
 Port[expr_String] :=
- Fold[StringReplace,
-  Rationalize[N@ToExpression@expr] // FullForm // ToString, {
-   "E" -> ToString@N[E, 20],
-   "Pi" -> ToString@N[Pi, 20],
-   Shortest["Rational[" ~~ a__ ~~ ", " ~~ b__ ~~ "]"] ->
+ Fold[StringReplace, 
+  Rationalize[ToExpression@expr] // FullForm // ToString, {
+   Shortest["Rational[" ~~ a__ ~~ ", " ~~ b__ ~~ "]"] -> 
     "Fraction(" ~~ a ~~ ", " ~~ b ~~ ")",
-   Shortest["Complex[" ~~ a__ ~~ ", " ~~ b__ ~~ "]"] ->
+   Shortest["Complex[" ~~ a__ ~~ ", " ~~ b__ ~~ "]"] -> 
     "complex(" ~~ a ~~ ", " ~~ b ~~ ")",
-   "List" | "`" -> ""
+   "List" | "`" -> "",
+   Shortest["Times[" ~~ a__ ~~ "]"] -> "Times([" ~~ a ~~ "])",
+   Longest["Plus[" ~~ a__ ~~ "]"] -> "sum([" ~~ a ~~ "])"
    }
   ]
 
