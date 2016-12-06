@@ -7,7 +7,7 @@ Port[expr_String] :=
    Shortest["Complex[" ~~ a__ ~~ ", " ~~ b__ ~~ "]"] -> 
     "complex(" ~~ a ~~ ", " ~~ b ~~ ")",
    "List" | "`" -> "",
-   Shortest["Times[" ~~ a__ ~~ "]"] -> "Times([" ~~ a ~~ "])",
+   Shortest["Times[" ~~ a__ ~~ "]"] -> "self.Times([" ~~ a ~~ "])",
    Longest["Plus[" ~~ a__ ~~ "]"] -> "sum([" ~~ a ~~ "])"
    }
   ]
