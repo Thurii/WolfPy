@@ -1,11 +1,13 @@
 (* Rewrite Wolfram code so that it's "eval" friendly *)
-Port[expr_String] :=
+Port[expr_String] := 
  Fold[StringReplace, 
   Rationalize[ToExpression@expr] // FullForm // ToString, {
    Shortest["Rational[" ~~ a__ ~~ ", " ~~ b__ ~~ "]"] -> 
     "Fraction(" ~~ a ~~ ", " ~~ b ~~ ")",
    Shortest["Complex[" ~~ a__ ~~ ", " ~~ b__ ~~ "]"] -> 
     "complex(" ~~ a ~~ ", " ~~ b ~~ ")",
+   Shortest["Power[" ~~ a__ ~~ ", " ~~ b__ ~~ "]"] -> 
+    "pow(" ~~ a ~~ "," ~~ b ~~ ")",
    "List" | "`" -> "",
    Shortest["Times[" ~~ a__ ~~ "]"] -> "self.Times([" ~~ a ~~ "])",
    Longest["Plus[" ~~ a__ ~~ "]"] -> "sum([" ~~ a ~~ "])"
