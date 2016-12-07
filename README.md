@@ -6,6 +6,6 @@ Once the Wolfram code has been evaluated wolfpy will do its best to port it to P
 In the event that Python's side isn't able to "eval" the result then it's returned as a string.
 
 ### What's working:
-1. Numbers (Integers, fractions, complex numbers)
+1. Numbers (Integers, fractions, floats, complex numbers)
 2. Lists
-3. Addition (i.e.: Plus[E,Pi])
+3. Exponention, Multiplication, Division, Addition, Subtraction
